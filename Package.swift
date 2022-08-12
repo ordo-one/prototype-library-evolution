@@ -6,23 +6,20 @@ import PackageDescription
 let package = Package(
     name: "prototype-library-evolution",
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "prototype-library-evolution",
-            targets: ["prototype-library-evolution"]),
+            name: "PrototypeLibraryEvolution",
+            type: .dynamic,
+            targets: ["PrototypeLibraryEvolution"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "prototype-library-evolution",
-            dependencies: []),
-        .testTarget(
-            name: "prototype-library-evolutionTests",
-            dependencies: ["prototype-library-evolution"]),
+            name: "PrototypeLibraryEvolution",
+            dependencies: [],
+            swiftSettings: [.unsafeFlags(["-enable-library-evolution",
+                                         "-emit-module-interface",
+                                          "-user-module-version", "1.0"
+                                         ])])
     ]
 )
